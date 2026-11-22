@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="WordPower 10A8 – an English vocabulary quiz with 24 questions, instant feedback, detailed results, and 6 interactive vocabulary cards." />
+  <meta name="theme-color" content="#0f2c46" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a8f7d'/%3E%3Cpath d='M8 9h7a3 3 0 0 1 3 3v12a3 3 0 0 0-3-3H8z' fill='%23fff'/%3E%3Cpath d='M24 9h-7a3 3 0 0 0-3 3v12a3 3 0 0 1 3-3h7z' fill='%23fff' opacity='.7'/%3E%3C/svg%3E" />
+  <title>WordPower 10A8 – English Vocabulary Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" />
+      <path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5v-16Z" />
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />
+    </symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14" /><path d="m6 13 6 6 6-6" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6 9 17l-5-5" />
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+    </symbol>
+    <symbol id="i-restart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" />
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m3 11 9-8 9 8" /><path d="M5 10v10h14V10" />
+    </symbol>
+    <symbol id="i-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><path d="m16 17 5-5-5-5" /><path d="M21 12H9" />
+    </symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z" /><path d="M15.5 8.5a5 5 0 0 1 0 7" /><path d="M18.5 5.5a9 9 0 0 1 0 13" />
+    </symbol>
+    <symbol id="i-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 11a8 8 0 0 0-14.9-3" /><path d="M4 5v4h4" /><path d="M4 13a8 8 0 0 0 14.9 3" /><path d="M20 19v-4h-4" />
+    </symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20V10" /><path d="M10 20V4" /><path d="M16 20v-7" /><path d="M22 20H2" />
+    </symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 6h13" /><path d="M8 12h13" /><path d="M8 18h13" /><path d="M3 6h.01" /><path d="M3 12h.01" /><path d="M3 18h.01" />
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+    </symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m4 3 7 17 2.5-6.5L20 11 4 3Z" />
+    </symbol>
+    <symbol id="i-cards" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="6" width="13" height="15" rx="2" /><path d="M8 2h11a2 2 0 0 1 2 2v12" />
+    </symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.5 14.4 9.6 21.5 12l-7.1 2.4L12 21.5 9.6 14.4 2.5 12l7.1-2.4L12 2.5Z" />
+    </symbol>
+  </svg>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="app">
+    <!-- ============================= HOME ============================= -->
+    <section id="screen-home" class="screen is-active" aria-label="Home">
+      <div class="container">
+        <header class="site-header">
+          <a class="brand js-home" href="#" aria-label="WordPower 10A8 – back to home">
+            <span class="brand__mark"><svg class="icon icon--22"><use href="#i-book"></use></svg></span>
+            <span class="brand__text"><strong>WordPower</strong><span>Class 10A8</span></span>
+          </a>
+          <div class="header-pill"><span class="pulse-dot"></span>English Vocabulary Quiz</div>
+        </header>
+
+        <section class="hero">
+          <div class="hero__copy">
+            <span class="eyebrow"><span class="eyebrow__dot"></span>English Vocabulary • Class 10A8</span>
+            <h1>Learn vocabulary,<br />spread <span class="text-gradient">kindness.</span></h1>
+            <p class="hero__lead">
+              24 multiple-choice questions built around 8 words and the phrase
+              <strong>“Many hands make light work.”</strong> Answer quickly, get instant feedback,
+              and lock in the vocabulary with 6 interactive flashcards.
+            </p>
+
+            <div class="hero__stats" aria-label="Quiz information">
+              <div class="stat-pill"><strong id="home-total-questions">24</strong><span>questions</span></div>
+              <div class="stat-pill"><strong>8</strong><span>vocabulary words</span></div>
+              <div class="stat-pill"><strong>6</strong><span>review cards</span></div>
+            </div>
+
+            <div class="hero__actions">
+              <button class="btn btn--primary btn--lg" id="start-quiz" type="button">
+                Start the quiz
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+              </button>
+              <a class="btn btn--link" href="#how-it-works">
+                How it works
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg>
+              </a>
+            </div>
+            <p class="microcopy">
+              <svg class="icon icon--15" aria-hidden="true"><use href="#i-check"></use></svg>
+              Free • No sign-up • Works on any device
+            </p>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <div class="decoration decoration--ring"></div>
+            <div class="decoration decoration--star"><svg class="icon icon--30"><use href="#i-sparkle"></use></svg></div>
+            <div class="decoration decoration--star2"><svg class="icon icon--19"><use href="#i-sparkle"></use></svg></div>
+
+            <article class="word-card word-card--kindness">
+              <div class="word-card__top"><span>Vocabulary</span><span class="type-chip">n</span></div>
+              <h3>KINDNESS</h3>
+              <p class="word-card__phon">/ˈkaɪndnəs/</p>
+              <p class="word-card__vi">the quality of being kind</p>
+              <p class="word-card__example">“A small act of kindness can brighten someone’s day.”</p>
+            </article>
+
+            <article class="word-card word-card--compassion">
+              <div class="word-card__top"><span>Vocabulary</span><span class="type-chip">n</span></div>
+              <h3>COMPASSION</h3>
+              <p class="word-card__phon">/kəmˈpæʃn/</p>
+              <p class="word-card__vi">sympathy for someone who is suffering</p>
+              <p class="word-card__example">“He showed compassion to his sick friend.”</p>
+            </article>
+
+            <div class="phrase-bubble">
+              <span class="phrase-bubble__label">Phrase of the day</span>
+              <p>“Many hands<br />make light work.”</p>
+              <span class="phrase-bubble__vi">Many people working together make a hard job easier.</span>
+            </div>
+
+            <div class="floating-badge">8 words <span>+</span> 1 phrase</div>
+          </div>
+        </section>
+      </div>
+
+      <section class="section container" id="how-it-works">
+        <div class="section-head">
+          <span class="eyebrow">How it works</span>
+          <h2>Three steps to remember more</h2>
+          <p>No sign-up needed. Take a few minutes to check your vocabulary and see what to review.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <span class="step__num">01</span>
+            <span class="step__icon"><svg class="icon" aria-hidden="true"><use href="#i-cursor"></use></svg></span>
+            <h3>Choose an answer</h3>
+            <p>Each question has four options, A–D. Questions and answers are shuffled every round.</p>
+          </article>
+          <article class="step">
+            <span class="step__num">02</span>
+            <span class="step__icon step__icon--lilac"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+            <h3>Get instant feedback</h3>
+            <p>Correct answers turn green; wrong answers turn red with the right answer and a clear English explanation.</p>
+          </article>
+          <article class="step">
+            <span class="step__num">03</span>
+            <span class="step__icon step__icon--peach"><svg class="icon" aria-hidden="true"><use href="#i-cards"></use></svg></span>
+            <h3>Review and remember</h3>
+            <p>See your results chart, review every question, and flip 6 interactive vocabulary cards.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container">
+        <div class="words-panel">
+          <div class="words-panel__head">
+            <div>
+              <span class="eyebrow">Word list</span>
+              <h2>What you’ll explore</h2>
+              <p>Eight vocabulary words and one phrase from Word Power &amp; Phrase of the Day.</p>
+            </div>
+            <span class="chip chip--teal">Word Power</span>
+          </div>
+
+          <div class="word-list">
+            <div class="word-item"><span>Kindness</span><small>being kind</small></div>
+            <div class="word-item"><span>Charity</span><small>help for people in need</small></div>
+            <div class="word-item"><span>Volunteer</span><small>help without payment</small></div>
+            <div class="word-item"><span>Donate</span><small>give to help others</small></div>
+            <div class="word-item"><span>Compassion</span><small>deep sympathy</small></div>
+            <div class="word-item"><span>Community</span><small>a shared group</small></div>
+            <div class="word-item"><span>Support</span><small>help and encourage</small></div>
+            <div class="word-item"><span>Share</span><small>give part to others</small></div>
+          </div>
+
+          <div class="phrase-item">
+            <span class="phrase-item__label">Phrase of the day</span>
+            <p>“Many hands make light work.”</p>
+            <span>When many people work together, a difficult job becomes easier.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="cta-band">
+          <div class="cta-band__copy">
+            <span class="eyebrow eyebrow--light">Ready?</span>
+            <h2>Test your vocabulary in 5 minutes.</h2>
+            <p>24 questions • Instant feedback • 6 vocabulary cards</p>
+          </div>
+          <button class="btn btn--light btn--lg" id="start-quiz-bottom" type="button">
+            Start now
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </div>
+      </section>
+
+      <footer class="site-footer container">
+        <div class="footer-brand">WordPower <span>10A8</span></div>
+        <p>Content: Word Power &amp; Phrase of the Day • For Class 10A8</p>
+        <p>Learn happily — remember longer — spread kindness.</p>
+      </footer>
+    </section>
+
+    <!-- ============================= QUIZ ============================= -->
+    <section id="screen-quiz" class="screen" aria-label="Quiz">
+      <div class="container container--narrow">
+        <header class="quiz-header">
+          <div class="brand brand--compact">
+            <span class="brand__mark"><svg class="icon icon--20"><use href="#i-book"></use></svg></span>
+            <span class="brand__text"><strong>WordPower</strong><span>Class 10A8</span></span>
+          </div>
+          <button class="btn btn--ghost btn--sm" id="exit-quiz" type="button">
+            <svg class="icon icon--16" aria-hidden="true"><use href="#i-exit"></use></svg>
+            Exit
+          </button>
+        </header>
+
+        <div class="progress-card">
+          <div class="progress-card__top">
+            <span class="question-count" id="quiz-position">Question 1 / 24</span>
+            <span class="live-score">
+              <span class="live-score__icon"><svg class="icon icon--11" aria-hidden="true"><use href="#i-check"></use></svg></span>
+              <span><strong id="live-correct">0</strong> correct</span>
+            </span>
+          </div>
+          <div class="progress-track" id="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-meta">
+            <span>Answered <strong id="answered-count">0</strong> / <span id="total-questions">24</span></span>
+            <span id="progress-percent">0%</span>
+          </div>
+        </div>
+
+        <article class="question-card" aria-labelledby="question-text">
+          <div class="question-card__head">
+            <span class="question-tag" id="question-tag">Vocabulary</span>
+            <span class="question-num" id="question-num">01</span>
+          </div>
+          <h1 class="question-text" id="question-text">Loading question…</h1>
+          <div class="options" id="options"></div>
+          <div class="feedback" id="feedback" aria-live="polite" hidden></div>
+          <div class="question-footer">
+            <p class="question-hint" id="question-hint">Choose one answer — you’ll get instant feedback.</p>
+            <button class="btn btn--primary" id="next-question" type="button" hidden>
+              Next
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+            </button>
+          </div>
+        </article>
+
+        <p class="quiz-footnote">Questions and answers are shuffled every round.</p>
+      </div>
+    </section>
+
+    <!-- ============================ RESULTS ============================ -->
+    <section id="screen-results" class="screen" aria-label="Results and vocabulary review">
+      <div class="container results">
+        <header class="results-topbar">
+          <a class="brand brand--compact js-home" href="#" aria-label="WordPower 10A8 – back to home">
+            <span class="brand__mark"><svg class="icon icon--20"><use href="#i-book"></use></svg></span>
+            <span class="brand__text"><strong>WordPower</strong><span>Class 10A8</span></span>
+          </a>
+          <button class="btn btn--ghost btn--sm" id="home-from-results-top" type="button">
+            <svg class="icon icon--16" aria-hidden="true"><use href="#i-home"></use></svg>
+            Home
+          </button>
+        </header>
+
+        <section class="result-hero">
+          <div class="result-hero__copy">
+            <span class="eyebrow eyebrow--light">Quiz complete</span>
+            <h1>You’ve finished the quiz!</h1>
+            <p id="result-message">Let’s review your results and revisit the words worth remembering.</p>
+            <div class="result-hero__actions">
+              <button class="btn btn--light" id="restart-quiz" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-restart"></use></svg>
+                Retake quiz
+              </button>
+              <button class="btn btn--outline-light" id="go-vocab" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-cards"></use></svg>
+                Review vocabulary
+              </button>
+            </div>
+          </div>
+          <div class="score-badge">
+            <span class="score-badge__label">Your score</span>
+            <strong class="score-badge__value" id="score-percent">0%</strong>
+            <span class="score-badge__detail" id="score-detail">0 / 24 correct</span>
+          </div>
+          <span class="result-hero__glow" aria-hidden="true"></span>
+        </section>
+
+        <div class="stat-grid">
+          <article class="stat-card stat-card--good">
+            <span class="stat-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+            <div><span class="stat-card__label">Correct answers</span><strong class="stat-card__value" id="stat-correct">0</strong></div>
+          </article>
+          <article class="stat-card stat-card--bad">
+            <span class="stat-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg></span>
+            <div><span class="stat-card__label">Incorrect answers</span><strong class="stat-card__value" id="stat-wrong">0</strong></div>
+          </article>
+          <article class="stat-card stat-card--info">
+            <span class="stat-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg></span>
+            <div><span class="stat-card__label">Total questions</span><strong class="stat-card__value" id="stat-total">0</strong></div>
+          </article>
+          <article class="stat-card stat-card--star">
+            <span class="stat-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg></span>
+            <div><span class="stat-card__label">Accuracy</span><strong class="stat-card__value" id="stat-percent">0%</strong></div>
+          </article>
+        </div>
+
+        <div class="results-grid">
+          <article class="panel chart-panel">
+            <div class="panel-head">
+              <div><span class="panel-kicker">Chart</span><h2>Correct &amp; incorrect</h2></div>
+              <span class="chip chip--teal" id="chart-caption">0% accuracy</span>
+            </div>
+            <div class="chart-body">
+              <div class="donut">
+                <svg viewBox="0 0 160 160" role="img" aria-labelledby="chart-title chart-desc">
+                  <title id="chart-title">Quiz results chart</title>
+                  <desc id="chart-desc">Ratio of correct and incorrect answers.</desc>
+                  <circle class="donut__track" cx="80" cy="80" r="62"></circle>
+                  <circle class="donut__segment donut__segment--incorrect" id="donut-wrong" cx="80" cy="80" r="62" transform="rotate(-90 80 80)"></circle>
+                  <circle class="donut__segment donut__segment--correct" id="donut-correct" cx="80" cy="80" r="62" transform="rotate(-90 80 80)"></circle>
+                </svg>
+                <div class="donut__center"><strong id="donut-percent">0%</strong><span>accuracy</span></div>
+              </div>
+              <div class="chart-legend">
+                <div class="legend-row">
+                  <span class="legend-dot legend-dot--good"></span>
+                  <span class="legend-name">Correct answers</span>
+                  <strong id="legend-correct">0</strong>
+                </div>
+                <div class="legend-row">
+                  <span class="legend-dot legend-dot--bad"></span>
+                  <span class="legend-name">Incorrect answers</span>
+                  <strong id="legend-wrong">0</strong>
+                </div>
+                <p class="chart-note" id="chart-note">Each correct answer earns one point. The percentage is rounded to the nearest whole number.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel review-panel">
+            <div class="panel-head">
+              <div><span class="panel-kicker">Review tips</span><h2>Words to revisit</h2></div>
+            </div>
+            <div class="review-chips" id="review-chips"></div>
+            <p class="review-note" id="review-note"></p>
+            <button class="btn btn--soft btn--block" id="review-cards-btn" type="button">
+              View 6 vocabulary cards
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg>
+            </button>
+          </article>
+        </div>
+
+        <section class="panel answers-panel">
+          <div class="panel-head">
+            <div><span class="panel-kicker">Details</span><h2>Review your answers</h2></div>
+            <div class="filter-tabs" role="group" aria-label="Filter answers">
+              <button class="filter-tab is-active" data-filter="all" type="button" aria-pressed="true">All <span id="count-all">0</span></button>
+              <button class="filter-tab" data-filter="correct" type="button" aria-pressed="false">Correct <span id="count-correct">0</span></button>
+              <button class="filter-tab" data-filter="wrong" type="button" aria-pressed="false">Incorrect <span id="count-wrong">0</span></button>
+            </div>
+          </div>
+          <div class="answer-list" id="answer-list"></div>
+        </section>
+
+        <section class="vocab-section" id="vocab-review">
+          <div class="vocab-head">
+            <div>
+              <span class="eyebrow eyebrow--light">Vocabulary review</span>
+              <h2>VOCABULARY REVIEW – COMPLETE VOCABULARY SUMMARY</h2>
+              <p>Six core words from this week. Tap a card to flip it, and tap the speaker icon to hear the pronunciation.</p>
+            </div>
+            <button class="btn btn--outline-light" id="reset-cards" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#i-flip"></use></svg>
+              Review vocabulary again
+            </button>
+          </div>
+          <div class="vocab-grid" id="vocab-grid"></div>
+        </section>
+
+        <div class="results-actions">
+          <button class="btn btn--primary btn--lg" id="restart-quiz-bottom" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-restart"></use></svg>
+            Retake quiz
+          </button>
+          <button class="btn btn--ghost btn--lg" id="home-from-results" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg>
+            Back to home
+          </button>
+        </div>
+
+        <footer class="results-footer">WordPower 10A8 • Learn happily – remember deeply – spread kindness.</footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Exit confirmation -->
+  <div class="modal" id="exit-modal" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="exit-title" aria-describedby="exit-desc">
+      <span class="modal__icon"><svg class="icon" aria-hidden="true"><use href="#i-exit"></use></svg></span>
+      <h2 id="exit-title">Exit the quiz?</h2>
+      <p id="exit-desc">Your progress this round won’t be saved. You can start over any time.</p>
+      <div class="modal__actions">
+        <button class="btn btn--ghost" id="modal-stay" type="button">Keep playing</button>
+        <button class="btn btn--danger" id="modal-exit" type="button">Exit quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sr-only" role="status" aria-live="polite" id="screen-announcer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
